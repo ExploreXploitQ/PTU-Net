@@ -1,0 +1,81 @@
+name: clouds-sz3-zfp
+
+paths:
+  # Override with: --set paths.data_root=/path/to/fields
+  data_root: ../data
+  output_root: ../outputs
+
+datasets:
+  - &cloud_dataset
+    name: CLDHGH
+    variable: CLDHGH
+    resolution_tag: 1800x3600
+    shape: [1800, 3600]
+    timestep_digits: 2
+    splits:
+      train: {start: 1, end: 9}
+      validation: [12, 13]
+      test: {start: 15, end: 62}
+    compressors: &compressor_pair
+      even: sz3
+      odd: zfp
+  - <<: *cloud_dataset
+    name: CLDLOW
+    variable: CLDLOW
+  - <<: *cloud_dataset
+    name: CLDMED
+    variable: CLDMED
+  - <<: *cloud_dataset
+    name: CLDTOT
+    variable: CLDTOT
+
+model:
+  patch_size: 32
+  stride: 16
+  subpatch_size: 8
+  embed_dim: 384
+  num_heads: 12
+  num_layers: 8
+  mlp_ratio: 2.0
+  dropout: 0.1
+  input_mode: center_difference
+  baseline_prior: [0.05, 0.90, 0.05]
+  correction_scale_init: 0.02
+  correction_scale_max: 0.2
+  unet_base_channels: 24
+
+training:
+  epochs: 300
+  batch_size: 32
+  validation_batch_size: 32
+  num_workers: 2
+  learning_rate: 0.0005
+  weight_decay: 0.001
+  gradient_clip_norm: 0.5
+  scheduler_factor: 0.5
+  scheduler_patience: 5
+  minimum_learning_rate: 0.0000001
+  early_stopping_patience: 15
+  minimum_delta: 0.000001
+  gradient_accumulation_steps: 1
+  baseline_warmup_epochs: 5
+  mixed_precision: true
+  seed: 42
+  device: auto
+  loss:
+    mse: 0.7
+    charbonnier: 0.3
+    correction: 0.0001
+    gradient: 0.0
+    spectral: 0.0
+
+evaluation:
+  batch_size: 32
+  num_workers: 2
+  temporal_search_radius: 2
+  metric_chunk_elements: 1048576
+
+tracking:
+  enabled: false
+  project: ptu-net
+  tags: [clouds, sz3-zfp]

@@ -1,0 +1,96 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ptu-net"
+version = "0.1.0"
+description = "Patch Transformer U-Net for temporal reconstruction of compressed scientific fields"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "PTU-Net contributors" }]
+keywords = [
+  "scientific-machine-learning",
+  "lossy-compression",
+  "transformer",
+  "u-net",
+  "reconstruction",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.24",
+  "PyYAML>=5.4",
+  "torch>=2.1",
+]
+
+[project.optional-dependencies]
+tracking = ["wandb>=0.16"]
+dev = [
+  "coverage[toml]>=7.4",
+  "mypy>=1.8",
+  "pytest>=8.0",
+  "pytest-cov>=4.1",
+  "ruff>=0.6",
+  "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+ptunet = "ptunet.cli:main"
+
+[project.urls]
+Documentation = "https://github.com/ExploreXploitQ/PTU-Net/tree/main/docs"
+Issues = "https://github.com/ExploreXploitQ/PTU-Net/issues"
+Repository = "https://github.com/ExploreXploitQ/PTU-Net"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ptunet"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "gpu: requires a CUDA-capable GPU",
+  "integration: exercises a complete train or evaluation workflow",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["ptunet"]
+
+[tool.coverage.report]
+fail_under = 75
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+ignore = ["N812"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["ptunet"]
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["wandb.*"]
+ignore_missing_imports = true

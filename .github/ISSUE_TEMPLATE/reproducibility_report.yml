@@ -1,0 +1,55 @@
+name: Reproducibility report
+description: Report an attempted reproduction or a proposed empirical result.
+title: "[Reproducibility]: "
+labels: [reproducibility]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A local observation is not automatically a project result. Provide enough provenance for another authorized user to check the run.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or claim under test
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data provenance and split
+      description: Include source, usage terms, checksums or stable identifiers, preprocessing, dimensions, and split membership. Do not upload restricted data.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and resolved configuration
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Software and hardware
+      description: Include the commit, Python, PyTorch, CUDA, GPU, driver, operating system, and seeds.
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Machine-readable artifacts
+      description: Link to per-sample metrics and raw logs when sharing is permitted.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome and limitations
+      description: Separate observations from interpretation and identify uncertainty.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I have not described this result as independently verified.
+          required: true

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.python-version
+
+# Environments
+.venv/
+venv/
+env/
+
+# Build output
+build/
+dist/
+.hatch/
+
+# Test and analysis caches
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*~
+
+# Local experiment state
+.artifacts/
+data/
+outputs/
+checkpoints/
+wandb/
+*.pt
+*.pth
+*.ckpt
+
+# Raw and reconstructed fields
+*.dat
+*.dat.*.out
+*.npy
+*.npz
+
+# Small reviewed test fixtures may be committed deliberately
+!tests/fixtures/**/*.dat
+!tests/fixtures/**/*.npy
+!tests/fixtures/**/*.npz

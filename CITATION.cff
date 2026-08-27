@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: >-
+  If you use PTU-Net, cite the software version or commit that you used.
+title: PTU-Net
+type: software
+authors:
+  - name: PTU-Net contributors
+version: 0.1.0
+repository-code: https://github.com/ExploreXploitQ/PTU-Net
+url: https://github.com/ExploreXploitQ/PTU-Net
+abstract: >-
+  PTU-Net is research software for patch-based temporal reconstruction of
+  compressed two-dimensional scientific fields using a transformer correction
+  path and a gated U-Net refinement head.
+keywords:
+  - scientific machine learning
+  - lossy compression
+  - temporal reconstruction
+  - transformer
+  - U-Net

@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.py text diff=python
+*.md text diff=markdown
+*.svg text
+*.toml text
+*.yaml text
+*.yml text
+
+*.dat binary
+*.npy binary
+*.npz binary
+*.pt binary
+*.pth binary
+*.ckpt binary

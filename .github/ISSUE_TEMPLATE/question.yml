@@ -1,0 +1,40 @@
+name: Usage question
+description: Ask a focused question about setup, data, configuration, or outputs.
+title: "[Question]: "
+labels: [question]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What you tried
+      description: Include a concise command and the relevant non-sensitive configuration.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      placeholder: 0.1.0 or a full commit hash
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include Python, PyTorch, operating system, device, and CUDA versions as relevant.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I read the usage and data-contract documentation.
+          required: true
+        - label: I removed credentials, restricted data, and private paths.
+          required: true

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">PTU-Net architecture</title>
+  <desc id="desc">Three compressed temporal fields form center-anchored features. An adaptive baseline, transformer correction, and gated U-Net refinement produce a center-field reconstruction.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#486581"/>
+    </marker>
+    <style>
+      .box { fill: #f7fafc; stroke: #486581; stroke-width: 2; }
+      .accent { fill: #eef6fb; stroke: #1677a6; stroke-width: 2; }
+      .warm { fill: #fff8ed; stroke: #b7791f; stroke-width: 2; }
+      .line { fill: none; stroke: #486581; stroke-width: 2; marker-end: url(#arrow); }
+      .label { fill: #102a43; font: 600 17px Arial, Helvetica, sans-serif; text-anchor: middle; }
+      .small { fill: #486581; font: 14px Arial, Helvetica, sans-serif; text-anchor: middle; }
+      .note { fill: #334e68; font: 15px Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+  <rect width="1120" height="500" rx="16" fill="#ffffff"/>
+
+  <text x="42" y="39" class="note" font-weight="700">Temporal inputs</text>
+  <rect x="40" y="62" width="150" height="64" rx="8" class="box"/>
+  <rect x="40" y="148" width="150" height="64" rx="8" class="box"/>
+  <rect x="40" y="234" width="150" height="64" rx="8" class="box"/>
+  <text x="115" y="89" class="label">Previous</text>
+  <text x="115" y="111" class="small">compressed field</text>
+  <text x="115" y="175" class="label">Center</text>
+  <text x="115" y="197" class="small">compressed field</text>
+  <text x="115" y="261" class="label">Next</text>
+  <text x="115" y="283" class="small">compressed field</text>
+
+  <path d="M190 94 C230 94, 225 154, 260 154" class="line"/>
+  <path d="M190 180 L260 180" class="line"/>
+  <path d="M190 266 C230 266, 225 206, 260 206" class="line"/>
+  <rect x="260" y="112" width="190" height="136" rx="10" class="accent"/>
+  <text x="355" y="145" class="label">Center anchoring</text>
+  <text x="355" y="177" class="small">center</text>
+  <text x="355" y="200" class="small">previous - center</text>
+  <text x="355" y="223" class="small">next - center</text>
+
+  <path d="M450 180 L507 180" class="line"/>
+  <rect x="507" y="124" width="184" height="112" rx="10" class="warm"/>
+  <text x="599" y="164" class="label">Adaptive baseline</text>
+  <text x="599" y="192" class="small">spatial and global</text>
+  <text x="599" y="214" class="small">temporal weights</text>
+
+  <path d="M450 211 C477 211, 479 330, 507 330" class="line"/>
+  <rect x="507" y="275" width="184" height="110" rx="10" class="accent"/>
+  <text x="599" y="311" class="label">Transformer path</text>
+  <text x="599" y="339" class="small">subpatch tokens</text>
+  <text x="599" y="361" class="small">bounded correction</text>
+
+  <path d="M691 180 C729 180, 724 231, 757 231" class="line"/>
+  <path d="M691 330 C729 330, 724 269, 757 269" class="line"/>
+  <rect x="757" y="185" width="178" height="130" rx="10" class="accent"/>
+  <text x="846" y="225" class="label">Gated U-Net</text>
+  <text x="846" y="253" class="small">local residual</text>
+  <text x="846" y="275" class="small">refinement</text>
+
+  <path d="M935 250 L986 250" class="line"/>
+  <rect x="986" y="207" width="105" height="86" rx="10" class="warm"/>
+  <text x="1038" y="241" class="label">Center</text>
+  <text x="1038" y="265" class="small">reconstruction</text>
+
+  <rect x="40" y="424" width="1051" height="46" rx="8" fill="#f5f8fb"/>
+  <text x="565" y="453" class="small">Overlapping patch predictions are combined with Gaussian weights during full-field reconstruction.</text>
+</svg>

@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a focused software or research-workflow improvement.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Which current limitation or workflow problem would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the interface and behavior you propose.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Scientific or engineering rationale
+      description: State relevant assumptions, references, or tests without making an unsupported performance claim.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Note smaller changes or existing tools that may solve the same problem.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This request does not include unpublished data or credentials.
+          required: true
+        - label: I understand that the repository currently has no declared software license.
+          required: true

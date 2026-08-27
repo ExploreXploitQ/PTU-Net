@@ -1,0 +1,49 @@
+name: synthetic-smoke
+
+paths:
+  data_root: ../.artifacts/synthetic
+  output_root: ../.artifacts/runs
+
+datasets:
+  - name: synthetic-field
+    variable: SYNTH
+    resolution_tag: 64x96
+    shape: [64, 96]
+    timestep_digits: 4
+    splits:
+      train: {start: 2, end: 6}
+      validation: [9]
+      test: [13]
+    compressors:
+      even: sz3
+      odd: zfp
+
+model:
+  patch_size: 16
+  stride: 8
+  subpatch_size: 4
+  embed_dim: 32
+  num_heads: 4
+  num_layers: 1
+  dropout: 0.0
+  baseline_hidden_channels: 8
+  unet_base_channels: 8
+
+training:
+  epochs: 2
+  batch_size: 16
+  validation_batch_size: 16
+  num_workers: 0
+  learning_rate: 0.0005
+  early_stopping_patience: 2
+  baseline_warmup_epochs: 0
+  mixed_precision: false
+  seed: 2026
+
+evaluation:
+  batch_size: 16
+  num_workers: 0
+  temporal_search_radius: 2
+
+tracking:
+  enabled: false
