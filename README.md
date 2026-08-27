@@ -38,21 +38,6 @@ The original experiment uses 32 by 32 patches, stride 16, 8 by 8 subpatches, emb
 - Evaluation checks checkpoint architecture metadata before loading, reports the compressed center field as a baseline, and writes per-field metrics with reconstructed float32 outputs.
 - Explicit pathway switches and matched-seed configurations support baseline-only, transformer-removal, and U-Net-removal studies.
 
-## Status at a glance
-
-| Item | Status |
-| --- | --- |
-| Package maturity | Alpha research software |
-| Core model | Implemented |
-| Configuration and command line | Implemented in the package refactor |
-| Atomic checkpoint and exact resume state | Implemented, with format-version-1 loading compatibility |
-| Synthetic software checks | Included for behavior and workflow testing |
-| Research data | Not distributed |
-| Trained weights | Not distributed |
-| Published benchmark values | None in this repository |
-| Legacy parity | Requires further equivalence testing |
-| Software license | Not declared |
-
 ## Installation
 
 PTU-Net requires Python 3.10 or newer. Install it from source in a dedicated environment:
