@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
   <title id="title">PTU-Net architecture</title>
-  <desc id="desc">Three compressed temporal fields form center-anchored features. An adaptive baseline, transformer correction, and gated U-Net refinement produce a center-field reconstruction.</desc>
+  <desc id="desc">Three decompressed temporal fields form center-anchored features. An adaptive baseline, transformer correction, and gated U-Net refinement produce a center-field reconstruction.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#486581"/>
@@ -22,11 +22,11 @@
   <rect x="40" y="148" width="150" height="64" rx="8" class="box"/>
   <rect x="40" y="234" width="150" height="64" rx="8" class="box"/>
   <text x="115" y="89" class="label">Previous</text>
-  <text x="115" y="111" class="small">compressed field</text>
+  <text x="115" y="111" class="small">decompressed field</text>
   <text x="115" y="175" class="label">Center</text>
-  <text x="115" y="197" class="small">compressed field</text>
+  <text x="115" y="197" class="small">decompressed field</text>
   <text x="115" y="261" class="label">Next</text>
-  <text x="115" y="283" class="small">compressed field</text>
+  <text x="115" y="283" class="small">decompressed field</text>
 
   <path d="M190 94 C230 94, 225 154, 260 154" class="line"/>
   <path d="M190 180 L260 180" class="line"/>
